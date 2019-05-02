@@ -32,11 +32,10 @@ while read -r objsize; do
         ns=`printf %0.2f ${size}`
         objs=`echo "${objs} + ${ns}" | bc`
 done < "$sizeofbkt"
-echo "Total bucket size = $objs" >>$outputfile
+
 
 #Calculate no.of objects in all bucktes
 while read -r objc; do
-        echo "Number of objects $objc"
         noobj=`echo "${noobj} + ${objc}" | bc`
 done < "$objfile"
 echo "Total number of objects in buckets = $noobj" >>$outputfile
@@ -44,6 +43,7 @@ echo "Total number of objects in buckets = $noobj" >>$outputfile
 #Storage cost calculation
 gbsize=`echo "${objs} / ${mb}" | bc`
 tbsize=`echo "${gbsize} / ${mb}" | bc`
+echo "Total bucket size = $gbsize GB" >>$outputfile
 
 if [ ${tbsize} -ge 50 ]; then
         echo "Size of all objects are exided more than 50TB" >>$outputfile
