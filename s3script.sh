@@ -20,7 +20,7 @@ noobj=0
 mb=1024
 
 #Verifiying and configuring awscli
-which aw >/dev/null
+which aws >/dev/null
 
 if [[ $? -ne 0 ]]; then
         echo "aws cli is not installed"
