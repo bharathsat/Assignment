@@ -4,6 +4,7 @@
 objfile="/tmp/objectfile"
 sizeofbkt="/tmp/bktsize"
 outputfile="/tmp/output"
+awsconfig="~/.aws/credentials"
 
 #Emptying files
 >$objfile
@@ -17,6 +18,35 @@ objc=1
 objs=0
 noobj=0
 mb=1024
+
+#Verifiying and configuring awscli
+which aw >/dev/null
+
+if [[ $? -ne 0 ]]; then
+        echo "aws cli is not installed"
+        pipvar=`pip --version | rev | awk '{print $1 $2}' | rev | sed 's/[^a-z  A-Z]//g'`
+        if [[ $pipvar -ne "python" ]]; then
+                echo "Installing pip to install aws-cli"
+                curl -O https://bootstrap.pypa.io/get-pip.py
+                sleep 2
+                python get-pip.py >/dev/null
+                sleep 2
+                echo "Installing Awscli..."
+                pip install awscli
+        else
+                echo "Installing Awscli...."
+                pip install awscli
+        fi
+        read -p "Enter aws_access_key_id: "  username
+        read -p "Enter aws_secret_access_key: "  password
+        echo "[default]" >>$awsconfig
+        echo "aws_access_key_id = $username" >>$awsconfig
+        echo "aws_secret_access_key = $password" >>$awsconfig
+        echo "Awscli is installed and configured properly"
+else
+        echo "aws cli is installed"
+fi
+
 
 #s3 commands
 bkts=(`aws s3 ls | awk '{print $3}'`)
