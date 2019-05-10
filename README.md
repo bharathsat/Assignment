@@ -8,6 +8,7 @@ Steps to consider to execute the script
 4. Find the sample output below
 ```
 bharath.sat@xxxxxxxx:~$ ./assignment.sh
+aws cli is installed
 Total number of objects in buckets = 270
 Total bucket size = 11 GB
 Total cost for the s3 storage is =.253 USD
@@ -19,4 +20,4 @@ bharath.sat@xxxxxxxx:~$
 ## Docker
 1. Attached docker file and nginx config file which can be used to build the image.
 2. Run ```docker build --tag=assignment``` to build the image.
-3. Run ```docker run -d -p 80:80 assignment``` to run the docker.
+3. Run ```docker run -d -p 80:3000 assignment``` to run the docker.
