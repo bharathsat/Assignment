@@ -1,28 +1,27 @@
-# React Example - Product Compare Page :tada: :fireworks:
+# Assignment
+Shell script and docker file
+## Shell script 
+Steps to consider to execute the script
+1. Install awscli on the machine and configure keys, incase if you are not using aws instance.
+2. Create IAM role with required access and attach the role to instance if you are running this script in the aws instance.
+3. Output will be displayed on the screen also saved on the file ```/tmp/output```.
+4. Find the sample output below
+```
+bharath.sat@xxxxxxxx:~$ ./assignment.sh
+aws cli is installed
+Configuring default accesskey and secret key's
+AWS Access Key ID [None]: XXXXXXXXXXXXXX
+AWS Secret Access Key [None]: XXXXXXXXXXXXXXX
+Default region name [None]: us-east-1
+Default output format [None]:
+Total number of objects in buckets = 270
+Total bucket size = 11 GB
+Total cost for the s3 storage is =.253 USD
+bharath.sat@xxxxxxxx:~$
+```
 
-Product comparison page build using **React** + **Redux** + **Bootstrap** + **SASS**
 
-![Screenshot](https://s8.postimg.cc/fdfsvumkl/Screen_Shot_2018-07-05_at_16.36.17.png)
-
-It's build on top of [`create-react-app`](http://www.google.lt)
-
-Usage
--
-Documentation how to *run*, *build* and *test* app
-
-> https://github.com/facebookincubator/create-react-app#npm-start-or-yarn-start
-
-Demo
--
-> http://react-compare-app.surge.sh
-
-Contributing
--
-Thank you for considering contributing!
-Please use GitHub issues and Pull Requests for Contributing.
-
-License
--
-The MIT License (MIT). Please see License File for more information.
-
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/Rhymond/product-compare-react)
+## Docker
+1. Attached docker file and nginx config file which can be used to build the image.
+2. Run ```docker build --tag=assignment``` to build the image.
+3. Run ```docker run -d -p 80:3000 assignment``` to run the docker.
