@@ -4,7 +4,6 @@
 objfile="/tmp/objectfile"
 sizeofbkt="/tmp/bktsize"
 outputfile="/tmp/output"
-awsconfig="~/.aws/credentials"
 
 #Emptying files
 >$objfile
@@ -37,14 +36,17 @@ if [[ $? -ne 0 ]]; then
                 echo "Installing Awscli...."
                 pip install awscli
         fi
-        read -p "Enter aws_access_key_id: "  username
-        read -p "Enter aws_secret_access_key: "  password
-        echo "[default]" >>$awsconfig
-        echo "aws_access_key_id = $username" >>$awsconfig
-        echo "aws_secret_access_key = $password" >>$awsconfig
-        echo "Awscli is installed and configured properly"
+	aws configure
 else
         echo "aws cli is installed"
+	deflt=`cat ~/.aws/credentials | grep default`
+	if [[ $? -ne 0 ]]; then
+		echo "Configuring default accesskey and secret key's"
+		aws configure
+	else
+		echo "Default accesskey and secret key is already configured"
+	fi
+
 fi
 
 
