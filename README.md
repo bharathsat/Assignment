@@ -9,11 +9,15 @@ Steps to consider to execute the script
 ```
 bharath.sat@xxxxxxxx:~$ ./assignment.sh
 aws cli is installed
+Configuring default accesskey and secret key's
+AWS Access Key ID [None]: AKIAZ77IJUDR6OSH5QX2
+AWS Secret Access Key [None]: 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
+Default region name [None]: us-east-1
+Default output format [None]:
 Total number of objects in buckets = 270
 Total bucket size = 11 GB
 Total cost for the s3 storage is =.253 USD
 bharath.sat@xxxxxxxx:~$
-
 ```
 
 
